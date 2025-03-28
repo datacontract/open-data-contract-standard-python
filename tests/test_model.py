@@ -1,6 +1,6 @@
 import yaml
 
-from .model import OpenDataContractStandard
+from open_data_contract_standard.model import OpenDataContractStandard
 
 
 def test_roundtrip():

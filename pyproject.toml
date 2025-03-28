@@ -1,6 +1,6 @@
 [project]
 name = "open-data-contract-standard"
-version = "3.0.1" # in sync with spec
+version = "3.0.1.dev1" # in sync with spec
 description = "The Pydantic Model of the Open Data Contract Standard"
 readme = "README.md"
 authors = [
@@ -15,8 +15,8 @@ classifiers = [
 ]
 requires-python = ">=3.10"
 dependencies = [
-    "pydantic>=2.8.2,<2.11.0",
-    "pyyaml~=6.0.1",
+    "pydantic>=2.8.0",
+    "pyyaml>=6.0.0",
 ]
 
 [project.optional-dependencies]

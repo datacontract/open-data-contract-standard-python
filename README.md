@@ -1,6 +1,6 @@
 # Open Data Contract Standard (Python)
 
-The pip module `open-data-contract-standard` to read and write YAML files using the [Open Data Contract Standard](https://datacontract.com). The pip module was extracted from the [Data Contract CLI](https://github.com/datacontract/datacontract-cli), which is its primary user.
+The pip module `open-data-contract-standard` to read and write YAML files using the [Open Data Contract Standard](https://github.com/bitol-io/open-data-contract-standard). The pip module was extracted from the [Data Contract CLI](https://github.com/datacontract/datacontract-cli), which is its primary user.
 
 The version number of the pip module corresponds to the version of the Open Data Contract Standard it supports.
 
