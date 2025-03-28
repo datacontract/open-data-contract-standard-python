@@ -1,1 +1,2 @@
 include open_data_contract_standard/schema.json
+global-include py.typed
