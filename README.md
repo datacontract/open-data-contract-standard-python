@@ -34,20 +34,13 @@ from open_data_contract_standard.model import OpenDataContractStandard
 
 # Load a data contract specification from a string
 data_contract_str = """
-dataContractSpecification: 1.1.0
-id: urn:datacontract:checkout:orders-latest
-info:
-  title: Orders Latest
-  version: 2.0.0
-  description: |
-    Successful customer orders in the webshop.
-    All orders since 2020-01-01.
-    Orders with their line items are in their current state (no history included).
-  owner: Checkout Team
-  status: active
-  contact:
-    name: John Doe (Data Product Owner)
-    url: https://teams.microsoft.com/l/channel/example/checkout
+version: 1.0.0
+kind: DataContract
+id: 53581432-6c55-4ba2-a65f-72344a91553b
+status: active
+name: my_table
+dataProduct: my_quantum
+apiVersion: v3.0.1
 """
 data_contract = OpenDataContractStandard.from_string(data_contract_str)
 # Print the data contract specification as a YAML string
