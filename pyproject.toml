@@ -1,0 +1,42 @@
+[project]
+name = "open-data-contract-standard"
+version = "3.0.1" # in sync with spec
+description = "The Pydantic Model of the Open Data Contract Standard"
+readme = "README.md"
+authors = [
+    { name = "Jochen Christ", email = "jochen.christ@innoq.com" },
+    { name = "Stefan Negele", email = "stefan.negele@innoq.com" },
+    { name = "Simon Harrer", email = "simon.harrer@innoq.com" },
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.8.2,<2.11.0",
+    "pyyaml~=6.0.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "ruff",
+]
+
+[project.urls]
+Homepage = "https://github.com/datacontract/open-data-contract-standard-python"
+Issues = "https://github.com/datacontract/open-data-contract-standard-python/issues"
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+extend-select = [
+  "I",   # re-order imports in alphabetic order
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
