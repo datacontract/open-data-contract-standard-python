@@ -1,5 +1,6 @@
 import importlib.resources as impresources
 import os
+import typing
 from typing import Any
 
 import pydantic as pyd
@@ -109,6 +110,7 @@ class SchemaProperty(pyd.BaseModel):
     criticalDataElement: bool | None = False
     quality: list[DataQuality] | None = None
     properties: list["SchemaProperty"] | None = None
+    items: typing.Optional["SchemaProperty"] = None
 
 
 class SchemaObject(pyd.BaseModel):

@@ -1,7 +1,0 @@
-#!/bin/bash
-
-set -ex
-
-uv run datamodel-codegen --input src/open_data_contract_standard/schema.json --output src/open_data_contract_standard/model_gen.py --output-model-type pydantic_v2.BaseModel --input-file-type jsonschema --use-union-operator  --use-standard-collections --collapse-root-models
-
-uv run datamodel-codegen --input src/datacontract_specification/schema.json --output src/datacontract_specification/model_gen.py --output-model-type pydantic_v2.BaseModel --input-file-type jsonschema --use-union-operator  --use-standard-collections --collapse-root-models
