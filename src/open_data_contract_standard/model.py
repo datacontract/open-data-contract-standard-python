@@ -205,7 +205,7 @@ class OpenDataContractStandard(pyd.BaseModel):
     def from_file(cls, file_path: str) -> "OpenDataContractStandard":
         if not os.path.exists(file_path):
             raise FileNotFoundError(f"The file '{file_path}' does not exist.")
-        with open(file_path, "r") as file:
+        with open(file_path, "r", encoding="utf-8") as file:
             file_content = file.read()
         return cls.from_string(file_content)
 
