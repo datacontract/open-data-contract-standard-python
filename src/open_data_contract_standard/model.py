@@ -67,12 +67,12 @@ class DataQuality(pyd.BaseModel):
     rule: str | None = None
     mustBe: Any | None = None
     mustNotBe: Any | None = None
-    mustBeGreaterThan: float | None = None
-    mustBeGreaterOrEqualTo: float | None = None
-    mustBeLessThan: float | None = None
-    mustBeLessOrEqualTo: float | None = None
-    mustBeBetween: list[float] | None = pyd.Field(None, max_length=2, min_length=2)
-    mustNotBeBetween: list[float] | None = pyd.Field(None, max_length=2, min_length=2)
+    mustBeGreaterThan: float | int | None = None
+    mustBeGreaterOrEqualTo: float | int | None = None
+    mustBeLessThan: float | int | None = None
+    mustBeLessOrEqualTo: float | int | None = None
+    mustBeBetween: list[float | int] | None = pyd.Field(None, max_length=2, min_length=2)
+    mustNotBeBetween: list[float | int] | None = pyd.Field(None, max_length=2, min_length=2)
     query: str | None = None
     engine: str | None = None
     implementation: str | dict[str, Any] | None = None
