@@ -46,3 +46,16 @@ data_contract = OpenDataContractStandard.from_string(data_contract_str)
 # Print the data contract specification as a YAML string
 print(data_contract.to_yaml())
 ```
+
+
+## Development
+
+```
+uv sync --all-extras
+```
+
+## Release
+
+- Change version number in `pyproject.toml`
+- Run `./release` in your command line
+- Wait for the releases on [GitHub](https://github.com/datacontract/open-data-contract-standard-python/releases), [PyPi](https://test.pypi.org/project/open-data-contract-standard/) and [PyPi (test)](https://test.pypi.org/project/open-data-contract-standard/)
