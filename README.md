@@ -8,9 +8,9 @@ The version number of the pip module corresponds to the version of the Open Data
 
 | Open Data Contract Standard Version | Pip Module Version |
 |-------------------------------------|--------------------|
-| 3.0.1                               | 3.0.1              |
+| 3.0.x                               | 3.0.y              |
 
-Fixes of a specific version are shipped with post released: `3.0.1.post1`, `3.0.1.post2`, etc.
+**Note**: We mirror major and minor version from the ODCS to the pip module, but not the patch version!
 
 ## Installation
 
