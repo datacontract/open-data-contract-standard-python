@@ -16,9 +16,9 @@
     },
     "apiVersion": {
       "type": "string",
-      "default": "v3.0.1",
-      "description": "Version of the standard used to build data contract. Default value is v3.0.1.",
-      "enum": ["v3.0.1", "v3.0.0", "v2.2.2", "v2.2.1", "v2.2.0"]
+      "default": "v3.0.2",
+      "description": "Version of the standard used to build data contract. Default value is v3.0.2.",
+      "enum": ["v3.0.2","v3.0.1", "v3.0.0", "v2.2.2", "v2.2.1", "v2.2.0"]
     },
     "id": {
       "type": "string",
@@ -626,7 +626,7 @@
           }
         },
         "required": [
-          "staging_dir",
+          "stagingDir",
           "schema"
         ]
       },
@@ -1555,6 +1555,11 @@
           "type": "string",
           "description": "The physical element data type in the data source. For example, VARCHAR(2), DOUBLE, INT."
         },
+        "physicalName": {
+          "type": "string",
+          "description": "Physical name.",
+          "examples": ["col_str_a"]
+        },
         "required": {
           "type": "boolean",
           "default": false,
@@ -2196,7 +2201,22 @@
       "properties": {
         "username": {
           "type": "string",
-          "description": "The user's username or email."
+          "description": "The user's username or email.",
+          "examples": [
+            "mail@example.com",
+            "uid12345678"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "description": "The user's name.",
+          "examples": [
+            "Jane Doe"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "The user's description."
         },
         "role": {
           "type": "string",

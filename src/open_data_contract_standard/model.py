@@ -8,13 +8,13 @@ import yaml
 
 
 class AuthoritativeDefinition(pyd.BaseModel):
-    url: str
-    type: str
+    url: str | None = None
+    type: str | None = None
 
 
 class Support(pyd.BaseModel):
-    channel: str
-    url: str
+    channel: str | None = None
+    url: str | None = None
     description: str | None = None
     tool: str | None = None
     scope: str | None = None
@@ -22,13 +22,15 @@ class Support(pyd.BaseModel):
 
 
 class Pricing(pyd.BaseModel):
-    priceAmount: float | None = None
+    priceAmount: float | int | None = None
     priceCurrency: str | None = None
     priceUnit: str | None = None
 
 
 class Team(pyd.BaseModel):
     username: str | None = None
+    name: str | None = None
+    description: str | None = None
     role: str | None = None
     dateIn: str | None = None
     dateOut: str | None = None
@@ -37,7 +39,7 @@ class Team(pyd.BaseModel):
 
 
 class ServiceLevelAgreementProperty(pyd.BaseModel):
-    property: str
+    property: str | None = None
     value: str | float | int | bool | None = None
     valueExt: str | float | int | bool | None = None
     unit: str | None = None
@@ -88,6 +90,7 @@ class Description(pyd.BaseModel):
 class SchemaProperty(pyd.BaseModel):
     name: str | None = None
     physicalType: str | None = None
+    physicalName: str | None = None
     description: str | None = None
     businessName: str | None = None
     authoritativeDefinitions: list[AuthoritativeDefinition] | None = None
@@ -129,7 +132,7 @@ class SchemaObject(pyd.BaseModel):
 
 
 class Role(pyd.BaseModel):
-    role: str
+    role: str | None = None
     description: str | None = None
     access: str | None = None
     firstLevelApprovers: str | None = None
@@ -138,8 +141,8 @@ class Role(pyd.BaseModel):
 
 
 class Server(pyd.BaseModel):
-    server: str
-    type: str
+    server: str | None = None
+    type: str | None = None
     description: str | None = None
     environment: str | None = None
     roles: list[Role] | None = None
@@ -170,10 +173,10 @@ class OpenDataContractStandard(pyd.BaseModel):
     model_config = pyd.ConfigDict(
         extra='forbid',
     )
-    version: str
-    kind: str
-    apiVersion: str
-    id: str
+    version: str | None = None
+    kind: str | None = None
+    apiVersion: str | None = None
+    id: str | None = None
     name: str | None = None
     tenant: str | None = None
     tags: list[str] | None = None
