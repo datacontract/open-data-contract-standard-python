@@ -62,7 +62,7 @@ class DataQuality(pyd.BaseModel):
     scheduler: str | None = None
     severity: str | None = None
     tags: list[str] | None = None
-    type: str | None = 'library'
+    type: str | None = None
     unit: str | None = None
     rule: str | None = None
     mustBe: Any | None = None
@@ -94,13 +94,13 @@ class SchemaProperty(pyd.BaseModel):
     tags: list[str] | None = None
     customProperties: list[CustomProperty] | None = None
     primaryKey: bool | None = None
-    primaryKeyPosition: int | None = -1
+    primaryKeyPosition: int | None = None
     logicalType: str | None = None
     logicalTypeOptions: dict[str, Any] | None = None
     required: bool | None = False
     unique: bool | None = False
     partitioned: bool | None = False
-    partitionKeyPosition: int | None = -1
+    partitionKeyPosition: int | None = None
     classification: str | None = None
     encryptedName: str | None = None
     transformSourceObjects: list[str] | None = None
