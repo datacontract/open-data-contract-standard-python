@@ -100,9 +100,9 @@ class SchemaProperty(pyd.BaseModel):
     primaryKeyPosition: int | None = None
     logicalType: str | None = None
     logicalTypeOptions: dict[str, Any] | None = None
-    required: bool | None = False
-    unique: bool | None = False
-    partitioned: bool | None = False
+    required: bool | None = None
+    unique: bool | None = None
+    partitioned: bool | None = None
     partitionKeyPosition: int | None = None
     classification: str | None = None
     encryptedName: str | None = None
@@ -110,7 +110,7 @@ class SchemaProperty(pyd.BaseModel):
     transformLogic: str | None = None
     transformDescription: str | None = None
     examples: list[Any] | None = None
-    criticalDataElement: bool | None = False
+    criticalDataElement: bool | None = None
     quality: list[DataQuality] | None = None
     properties: list["SchemaProperty"] | None = None
     items: typing.Optional["SchemaProperty"] = None
