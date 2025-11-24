@@ -10,6 +10,7 @@ The version number of the pip module corresponds to the version of the Open Data
 |-------------------------------------|--------------------|
 | 3.0.1                               | >=3.0.1            |
 | 3.0.2                               | >=3.0.4            |
+| 3.1.0                               | >=3.1.0            |
 
 **Note**: We mirror major and minor version from the ODCS to the pip module, but not the patch version!
 
@@ -40,8 +41,7 @@ kind: DataContract
 id: 53581432-6c55-4ba2-a65f-72344a91553b
 status: active
 name: my_table
-dataProduct: my_quantum
-apiVersion: v3.0.1
+apiVersion: v3.1.0
 """
 data_contract = OpenDataContractStandard.from_string(data_contract_str)
 # Print the data contract specification as a YAML string
