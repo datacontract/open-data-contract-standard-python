@@ -88,7 +88,9 @@ class DataQuality(pyd.BaseModel):
     tags: list[str] | None = None
     type: str | None = None
     unit: str | None = None
-    rule: str | None = None
+    metric: str | None = None
+    rule: str | None = None  # Deprecated: Use metric instead
+    arguments: dict[str, Any] | None = None
     mustBe: Any | None = None
     mustNotBe: Any | None = None
     mustBeGreaterThan: float | int | None = None
