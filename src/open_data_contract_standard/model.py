@@ -27,7 +27,12 @@ class Pricing(pyd.BaseModel):
     priceUnit: str | None = None
 
 
-class Team(pyd.BaseModel):
+class CustomProperty(pyd.BaseModel):
+    property: str | None = None
+    value: Any | None = None
+
+
+class TeamMember(pyd.BaseModel):
     username: str | None = None
     name: str | None = None
     description: str | None = None
@@ -35,6 +40,18 @@ class Team(pyd.BaseModel):
     dateIn: str | None = None
     dateOut: str | None = None
     replacedByUsername: str | None = None
+    tags: list[str] | None = None
+    customProperties: list[CustomProperty] | None = None
+    authoritativeDefinitions: list[AuthoritativeDefinition] | None = None
+
+
+class Team(pyd.BaseModel):
+    name: str | None = None
+    description: str | None = None
+    members: list[TeamMember] | None = None
+    tags: list[str] | None = None
+    customProperties: list[CustomProperty] | None = None
+    authoritativeDefinitions: list[AuthoritativeDefinition] | None = None
 
 
 
@@ -45,11 +62,6 @@ class ServiceLevelAgreementProperty(pyd.BaseModel):
     unit: str | None = None
     element: str | None = None
     driver: str | None = None
-
-
-class CustomProperty(pyd.BaseModel):
-    property: str | None = None
-    value: Any | None = None
 
 
 class DataQuality(pyd.BaseModel):
@@ -188,7 +200,7 @@ class OpenDataContractStandard(pyd.BaseModel):
     schema_: list[SchemaObject] | None = pyd.Field(default=None, alias="schema")
     support: list[Support] | None = None
     price: Pricing | None = None
-    team: list[Team] | None = None
+    team: Team | list[TeamMember] | None = None
     roles: list[Role] | None = None
     slaDefaultElement: str | None = None
     slaProperties: list[ServiceLevelAgreementProperty] | None = None

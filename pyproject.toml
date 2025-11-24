@@ -1,6 +1,6 @@
 [project]
 name = "open-data-contract-standard"
-version = "3.0.5" # in sync with spec
+version = "3.1.0" # in sync with spec
 description = "The Pydantic Model of the Open Data Contract Standard"
 readme = "README.md"
 authors = [
