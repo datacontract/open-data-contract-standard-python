@@ -10,26 +10,31 @@ import yaml
 class AuthoritativeDefinition(pyd.BaseModel):
     url: str | None = None
     type: str | None = None
+    description: str | None = None
+
+
+class CustomProperty(pyd.BaseModel):
+    id: str | None = None
+    property: str | None = None
+    value: Any | None = None
+    description: str | None = None
 
 
 class Support(pyd.BaseModel):
+    id: str | None = None
     channel: str | None = None
     url: str | None = None
     description: str | None = None
     tool: str | None = None
     scope: str | None = None
     invitationUrl: str | None = None
+    customProperties: list[CustomProperty] | None = None
 
 
 class Pricing(pyd.BaseModel):
     priceAmount: float | int | None = None
     priceCurrency: str | None = None
     priceUnit: str | None = None
-
-
-class CustomProperty(pyd.BaseModel):
-    property: str | None = None
-    value: Any | None = None
 
 
 class TeamMember(pyd.BaseModel):
@@ -56,15 +61,20 @@ class Team(pyd.BaseModel):
 
 
 class ServiceLevelAgreementProperty(pyd.BaseModel):
+    id: str | None = None
     property: str | None = None
     value: str | float | int | bool | None = None
     valueExt: str | float | int | bool | None = None
     unit: str | None = None
     element: str | None = None
     driver: str | None = None
+    description: str | None = None
+    scheduler: str | None = None
+    schedule: str | None = None
 
 
 class DataQuality(pyd.BaseModel):
+    id: str | None = None
     authoritativeDefinitions: list[AuthoritativeDefinition] | None = None
     businessImpact: str | None = None
     customProperties: list[CustomProperty] | None = None
@@ -99,7 +109,15 @@ class Description(pyd.BaseModel):
     customProperties: list[CustomProperty] | None = None
 
 
+class Relationship(pyd.BaseModel):
+    type: str | None
+    from_: str | list[str] | None = pyd.Field(default=None, alias="from")
+    to: str | list[str] | None = None
+    customProperties: list[CustomProperty] | None = None
+
+
 class SchemaProperty(pyd.BaseModel):
+    id: str | None = None
     name: str | None = None
     physicalType: str | None = None
     physicalName: str | None = None
@@ -123,12 +141,14 @@ class SchemaProperty(pyd.BaseModel):
     transformDescription: str | None = None
     examples: list[Any] | None = None
     criticalDataElement: bool | None = None
+    relationships: list[Relationship] | None = None
     quality: list[DataQuality] | None = None
     properties: list["SchemaProperty"] | None = None
     items: typing.Optional["SchemaProperty"] = None
 
 
 class SchemaObject(pyd.BaseModel):
+    id: str | None = None
     name: str | None = None
     physicalType: str | None = None
     description: str | None = None
@@ -140,10 +160,12 @@ class SchemaObject(pyd.BaseModel):
     physicalName: str | None = None
     dataGranularityDescription: str | None = None
     properties: list[SchemaProperty] | None = None
+    relationships: list[Relationship] | None = None
     quality: list[DataQuality] | None = None
 
 
 class Role(pyd.BaseModel):
+    id: str | None = None
     role: str | None = None
     description: str | None = None
     access: str | None = None
@@ -153,6 +175,7 @@ class Role(pyd.BaseModel):
 
 
 class Server(pyd.BaseModel):
+    id: str | None = None
     server: str | None = None
     type: str | None = None
     description: str | None = None
