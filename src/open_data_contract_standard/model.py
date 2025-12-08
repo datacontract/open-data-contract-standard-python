@@ -8,6 +8,7 @@ import yaml
 
 
 class AuthoritativeDefinition(pyd.BaseModel):
+    id: str | None = None
     url: str | None = None
     type: str | None = None
     description: str | None = None
@@ -32,12 +33,14 @@ class Support(pyd.BaseModel):
 
 
 class Pricing(pyd.BaseModel):
+    id: str | None = None
     priceAmount: float | int | None = None
     priceCurrency: str | None = None
     priceUnit: str | None = None
 
 
 class TeamMember(pyd.BaseModel):
+    id: str | None = None
     username: str | None = None
     name: str | None = None
     description: str | None = None
@@ -51,6 +54,7 @@ class TeamMember(pyd.BaseModel):
 
 
 class Team(pyd.BaseModel):
+    id: str | None = None
     name: str | None = None
     description: str | None = None
     members: list[TeamMember] | None = None
@@ -202,6 +206,7 @@ class Server(pyd.BaseModel):
     schema_: str | None = pyd.Field(default=None, alias="schema")
     serviceName: str | None = None
     stagingDir: str | None = None
+    stream: str | None = None
     warehouse: str | None = None
 
 
