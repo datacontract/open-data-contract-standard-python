@@ -116,7 +116,7 @@ class Description(pyd.BaseModel):
 
 
 class Relationship(pyd.BaseModel):
-    type: str | None
+    type: str | None = None
     from_: str | list[str] | None = pyd.Field(default=None, alias="from")
     to: str | list[str] | None = None
     customProperties: list[CustomProperty] | None = None
