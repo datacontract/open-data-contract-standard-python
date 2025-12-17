@@ -116,7 +116,7 @@ class Description(pyd.BaseModel):
 
 
 class Relationship(pyd.BaseModel):
-    type: str | None
+    type: str | None = "foreignKey"
     from_: str | list[str] | None = pyd.Field(default=None, alias="from")
     to: str | list[str] | None = None
     customProperties: list[CustomProperty] | None = None
@@ -133,20 +133,20 @@ class SchemaProperty(pyd.BaseModel):
     tags: list[str] | None = None
     customProperties: list[CustomProperty] | None = None
     primaryKey: bool | None = None
-    primaryKeyPosition: int | None = None
+    primaryKeyPosition: int | None = -1
     logicalType: str | None = None
     logicalTypeOptions: dict[str, Any] | None = None
-    required: bool | None = None
-    unique: bool | None = None
-    partitioned: bool | None = None
-    partitionKeyPosition: int | None = None
+    required: bool | None = False
+    unique: bool | None = False
+    partitioned: bool | None = False
+    partitionKeyPosition: int | None = -1
     classification: str | None = None
     encryptedName: str | None = None
     transformSourceObjects: list[str] | None = None
     transformLogic: str | None = None
     transformDescription: str | None = None
     examples: list[Any] | None = None
-    criticalDataElement: bool | None = None
+    criticalDataElement: bool | None = False
     relationships: list[Relationship] | None = None
     quality: list[DataQuality] | None = None
     properties: list["SchemaProperty"] | None = None
@@ -216,8 +216,8 @@ class OpenDataContractStandard(pyd.BaseModel):
         extra='forbid',
     )
     version: str | None = None
-    kind: str | None = None
-    apiVersion: str | None = None
+    kind: str | None = "DataContract"
+    apiVersion: str | None = "v3.1.0"
     id: str | None = None
     name: str | None = None
     tenant: str | None = None

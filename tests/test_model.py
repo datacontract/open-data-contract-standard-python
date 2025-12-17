@@ -22,3 +22,8 @@ def assert_equals_yaml(data_contract_str):
 
 def test_json_schema():
     assert "" != OpenDataContractStandard.json_schema()
+
+def test_odcs_full_example():
+    with open("tests/full-example.odcs.yaml", "r", encoding="utf-8") as file:
+        data_contract_str = file.read()
+    OpenDataContractStandard.from_string(data_contract_str)
