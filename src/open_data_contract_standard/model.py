@@ -208,6 +208,7 @@ class Server(pyd.BaseModel):
     stagingDir: str | None = None
     stream: str | None = None
     warehouse: str | None = None
+    http_scheme: str | None = None
 
 
 
