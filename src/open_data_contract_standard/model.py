@@ -19,6 +19,7 @@ class CustomProperty(pyd.BaseModel):
     property: str | None = None
     value: Any | None = None
     description: str | None = None
+    vendor: str | None = None
 
 
 class Support(pyd.BaseModel):
@@ -75,6 +76,8 @@ class ServiceLevelAgreementProperty(pyd.BaseModel):
     description: str | None = None
     scheduler: str | None = None
     schedule: str | None = None
+    customProperties: list[CustomProperty] | None = None
+    authoritativeDefinitions: list[AuthoritativeDefinition] | None = None
 
 
 class DataQuality(pyd.BaseModel):
@@ -116,10 +119,59 @@ class Description(pyd.BaseModel):
 
 
 class Relationship(pyd.BaseModel):
+    id: str | None = None
     type: str | None = None
     from_: str | list[str] | None = pyd.Field(default=None, alias="from")
     to: str | list[str] | None = None
     customProperties: list[CustomProperty] | None = None
+
+
+class Synonym(pyd.BaseModel):
+    id: str | None = None
+    synonym: str | None = None
+    description: str | None = None
+    locale: str | None = None
+    source: str | None = None
+    status: str | None = None
+    customProperties: list[CustomProperty] | None = None
+
+
+class EnumValue(pyd.BaseModel):
+    id: str | None = None
+    value: Any | None = None
+    label: str | None = None
+    description: str | None = None
+    tags: list[str] | None = None
+    customProperties: list[CustomProperty] | None = None
+    authoritativeDefinitions: list[AuthoritativeDefinition] | None = None
+
+
+class MapDefinition(pyd.BaseModel):
+    key: typing.Optional["SchemaProperty"] = None
+    value: typing.Optional["SchemaProperty"] = None
+
+
+class VerifiedStatement(pyd.BaseModel):
+    id: str | None = None
+    question: str | None = None
+    answer: str | None = None
+    tags: list[str] | None = None
+    customProperties: list[CustomProperty] | None = None
+    authoritativeDefinitions: list[AuthoritativeDefinition] | None = None
+
+
+class Constraint(pyd.BaseModel):
+    id: str | None = None
+    constraint: str | None = None
+    tags: list[str] | None = None
+    customProperties: list[CustomProperty] | None = None
+    authoritativeDefinitions: list[AuthoritativeDefinition] | None = None
+
+
+class Context(pyd.BaseModel):
+    instructions: str | None = None
+    verifiedStatements: list[VerifiedStatement] | None = None
+    constraints: list[Constraint] | None = None
 
 
 class SchemaProperty(pyd.BaseModel):
@@ -129,6 +181,8 @@ class SchemaProperty(pyd.BaseModel):
     physicalName: str | None = None
     description: str | None = None
     businessName: str | None = None
+    deprecated: bool | None = None
+    synonyms: list[Synonym] | None = None
     authoritativeDefinitions: list[AuthoritativeDefinition] | None = None
     tags: list[str] | None = None
     customProperties: list[CustomProperty] | None = None
@@ -136,6 +190,7 @@ class SchemaProperty(pyd.BaseModel):
     primaryKeyPosition: int | None = None
     logicalType: str | None = None
     logicalTypeOptions: dict[str, Any] | None = None
+    semanticType: str | None = None
     required: bool | None = None
     unique: bool | None = None
     partitioned: bool | None = None
@@ -146,11 +201,13 @@ class SchemaProperty(pyd.BaseModel):
     transformLogic: str | None = None
     transformDescription: str | None = None
     examples: list[Any] | None = None
+    enum: list[EnumValue] | None = None
     criticalDataElement: bool | None = None
     relationships: list[Relationship] | None = None
     quality: list[DataQuality] | None = None
     properties: list["SchemaProperty"] | None = None
     items: typing.Optional["SchemaProperty"] = None
+    map: MapDefinition | None = None
 
 
 class SchemaObject(pyd.BaseModel):
@@ -159,6 +216,8 @@ class SchemaObject(pyd.BaseModel):
     physicalType: str | None = None
     description: str | None = None
     businessName: str | None = None
+    deprecated: bool | None = None
+    synonyms: list[Synonym] | None = None
     authoritativeDefinitions: list[AuthoritativeDefinition] | None = None
     tags: list[str] | None = None
     customProperties: list[CustomProperty] | None = None
@@ -168,6 +227,7 @@ class SchemaObject(pyd.BaseModel):
     properties: list[SchemaProperty] | None = None
     relationships: list[Relationship] | None = None
     quality: list[DataQuality] | None = None
+    context: Context | str | None = None
 
 
 class Role(pyd.BaseModel):
@@ -191,15 +251,18 @@ class Server(pyd.BaseModel):
 
     account: str | None = None
     catalog: str | None = None
+    catalogUrl: str | None = None
     database: str | None = None
     dataset: str | None = None
     delimiter: str | None = None
+    encoding: str | None = None
     endpointUrl: str | None = None
     format: str | None = None
     host: str | None = None
     location: str | None = None
+    namespace: str | None = None
     path: str | None = None
-    port: int | None = None
+    port: int | str | None = None
     project: str | None = None
     region: str | None = None
     regionName: str | None = None
@@ -208,7 +271,7 @@ class Server(pyd.BaseModel):
     stagingDir: str | None = None
     stream: str | None = None
     warehouse: str | None = None
-
+    workgroup: str | None = None
 
 
 class OpenDataContractStandard(pyd.BaseModel):
@@ -236,6 +299,7 @@ class OpenDataContractStandard(pyd.BaseModel):
     slaProperties: list[ServiceLevelAgreementProperty] | None = None
     authoritativeDefinitions: list[AuthoritativeDefinition] | None = None
     customProperties: list[CustomProperty] | None = None
+    context: Context | str | None = None
     contractCreatedTs: str | None = None
 
     def to_yaml(self) -> str:
