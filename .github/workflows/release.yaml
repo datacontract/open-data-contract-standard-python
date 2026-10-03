@@ -13,7 +13,7 @@ jobs:
     secrets: inherit
 
 #  check_version:
-#    runs-on: ubuntu-latest
+#    runs-on: ubuntu-24.04
 #    steps:
 #      - uses: actions/checkout@v4
 #      - name: check tag version == pyproject.version
@@ -39,7 +39,7 @@ jobs:
 #          echo "Public version: ${{ steps.versioncheck.outputs.public_version }}"   # e.g., 0.1.0
 
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs:
       - test
      # - check_version
@@ -72,7 +72,7 @@ jobs:
       Publish Python 🐍 distribution 📦 to PyPI
     needs:
       - build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment:
       name: release-pypi
       url: https://pypi.org/p/open-data-contract-standard
@@ -93,7 +93,7 @@ jobs:
       Create a GitHub Release
     needs:
       - publish-to-pypi
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     permissions:
       contents: write  # IMPORTANT: mandatory for making GitHub Releases
@@ -134,7 +134,7 @@ jobs:
     name: Publish Python 🐍 distribution 📦 to TestPyPI
     needs:
       - build
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     environment:
       name: release-testpypi
       url: https://test.pypi.org/p/open-data-contract-standard
